@@ -1,6 +1,7 @@
 require './lib/vendor'
 require 'minitest/autorun'
-require 'minitst/test'
+require 'minitest/test'
+require 'minitest/pride'
 
 class VendorTest < Minitest::Test
 
