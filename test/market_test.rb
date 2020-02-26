@@ -61,6 +61,9 @@ class MarketTest < Minitest::Test
   def test_it_can_return_potential_revenues_for_vendors
     assert_equal 345.00, @vendor2.potential_revenue
     assert_equal 48.75, @vendor3.potential_revenue
+  end
 
+  def test_it_can_make_a_sorted_item_list
+    assert_equal ["Banana Nice Cream", "Peach", "Peach-Raspberry Nice Cream", "Tomato"], @market.sorted_item_list
   end
 end
