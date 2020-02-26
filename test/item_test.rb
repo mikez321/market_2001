@@ -6,7 +6,7 @@ require 'minitest/pride'
 class ItemTest < Minitest::Test
 
   def setup
-    @tem1 = Item.new({name: 'Peach', price: "$0.75"})
+    @item1 = Item.new({name: 'Peach', price: "$0.75"})
     @item2 = Item.new({name: 'Tomato', price: '$0.50'})
   end
 
@@ -15,7 +15,7 @@ class ItemTest < Minitest::Test
   end
 
   def test_it_has_attributes
-    assert_equal "Tomato", item2.name
-    assert_equal 0.50, item2.price
+    assert_equal "Tomato", @item2.name
+    assert_equal 0.50, @item2.price
   end
 end
