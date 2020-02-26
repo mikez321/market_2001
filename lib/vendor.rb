@@ -13,4 +13,10 @@ class Vendor
     @inventory[item] += quantity
   end
 
+  def potential_revenue
+    inventory.map do |item|
+      item.first.price * item.last
+    end.sum
+  end
+
 end
