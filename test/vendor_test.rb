@@ -21,13 +21,17 @@ class VendorTest < Minitest::Test
     assert_equal 0, @vendor.check_stock(@item1)
   end
 
+  def test_it_can_add_items_to_stock
+    @vendor.stock(@item1, 30)
+
+    expected = {@item1 => 30}
+
+    assert_equal expected, @vendor.inventory
+  end
+
 end
 
-# @vendor.stock(@item1, 30)
-#
-# @vendor.inventory
-# #=> {#<Item:0x007f9c56740d48...> => 30}
-#
+
 # @vendor.check_stock(@item1)
 # #=> 30
 #
