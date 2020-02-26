@@ -20,6 +20,9 @@ class MarketTest < Minitest::Test
     @vendor2.stock(@item3, 25)
     @vendor3 = Vendor.new("Palisade Peach Shack")
     @vendor3.stock(@item1, 65)
+    @market.add_vendor(@vendor1)
+    @market.add_vendor(@vendor2)
+    @market.add_vendor(@vendor3)
   end
 
   def test_it_exists
@@ -33,30 +36,26 @@ class MarketTest < Minitest::Test
   end
 
   def test_it_can_add_vendors
-    @market.add_vendor(@vendor1)
-    @market.add_vendor(@vendor2)
-    @market.add_vendor(@vendor3)
+    market = Market.new("South Pearl Street Farmers Market")
+    market.add_vendor(@vendor1)
+    market.add_vendor(@vendor2)
+    market.add_vendor(@vendor3)
 
-    assert_equal [@vendor1, @vendor2, @vendor3], @market.vendors
+    assert_equal [@vendor1, @vendor2, @vendor3], market.vendors
   end
 
   def test_it_knows_vendor_names
-    @market.add_vendor(@vendor1)
-    @market.add_vendor(@vendor2)
-    @market.add_vendor(@vendor3)
     assert_equal ["Rocky Mountain Fresh", "Ba-Nom-a-Nom", "Palisade Peach Shack"], @market.vendor_names
+  end
+
+  def test_it_knows_vendors_that_sell_an_item
+    assert_equal [@vendor1, @vendor3], @market.vendors_that_sell(@item1)
+
+
+    assert_equal [@vendor2], @market.vendors_that_sell(@item4)
   end
 end
 
-
-#
-#
-# @market.vendors_that_sell(item1)
-# #=> [#<Vendor:0x00007fe1348a1160...>, #<Vendor:0x00007fe134910650...>]
-#
-# @market.vendors_that_sell(item4)
-# #=> [#<Vendor:0x00007fe1349bed40...>]
-#
 # @vendor1.potential_revenue
 # #=> 29.75
 #
