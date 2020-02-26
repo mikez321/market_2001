@@ -63,7 +63,22 @@ class MarketTest < Minitest::Test
     assert_equal 48.75, @vendor3.potential_revenue
   end
 
+  def test_it_can_show_a_total_inventory
+    skip
+
+
+    assert_equal expected, market.total_inventory
+  end
+
   def test_it_can_make_a_sorted_item_list
     assert_equal ["Banana Nice Cream", "Peach", "Peach-Raspberry Nice Cream", "Tomato"], @market.sorted_item_list
+  end
+
+  def test_it_knows_overstocked_items
+    assert_equal [@item1], @market.overstocked_items
+
+     #An item is overstocked if it is sold by
+     #more than 1 vendor AND the total quantity
+     #is greater than 50.
   end
 end

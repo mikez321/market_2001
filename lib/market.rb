@@ -28,4 +28,19 @@ class Market
       end
     end.uniq.sort
   end
+
+  def overstocked_items
+    overstock = vendors.reduce({}) do |acc, vendor|
+      vendor.inventory.each do |item|
+      acc[item.first] = item.last
+      end
+    acc
+    end
+    x = overstock.find_all do |item|
+      item.last > 50
+    end.flatten
+    x.find_all do |item|
+      vendors_that_sell(item).length > 1
+    end
+  end
 end
