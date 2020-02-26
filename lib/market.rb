@@ -43,4 +43,23 @@ class Market
       vendors_that_sell(item).length > 1
     end
   end
+
+  def total_inventory
+
+    mini_hash = Hash.new(0)
+    # vendors.each do |vendor|
+    #   vendor.inventory.each do |item, quantity|
+    #   require "pry"; binding.pry
+    #   end
+    # end
+
+    total_inventory = Hash.new(0)
+    vendors.each do |vendor|
+      vendor.inventory.each do |item, quantity|
+        require "pry"; binding.pry
+        total_inventory[item] = "TBD"
+      end
+    end
+  end
+
 end
