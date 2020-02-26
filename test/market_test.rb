@@ -38,12 +38,18 @@ class MarketTest < Minitest::Test
     @market.add_vendor(@vendor3)
 
     assert_equal [@vendor1, @vendor2, @vendor3], @market.vendors
+  end
 
+  def test_it_knows_vendor_names
+    @market.add_vendor(@vendor1)
+    @market.add_vendor(@vendor2)
+    @market.add_vendor(@vendor3)
+    assert_equal ["Rocky Mountain Fresh", "Ba-Nom-a-Nom", "Palisade Peach Shack"], @market.vendor_names
   end
 end
+
+
 #
-# @market.vendor_names
-# #=> ["Rocky Mountain Fresh", "Ba-Nom-a-Nom", "Palisade Peach Shack"]
 #
 # @market.vendors_that_sell(item1)
 # #=> [#<Vendor:0x00007fe1348a1160...>, #<Vendor:0x00007fe134910650...>]
